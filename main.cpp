@@ -1,6 +1,6 @@
 #include<iostream>
 #include<bits/stdc++.h>
-#include "Tensor.cpp"
+#include "libs/Tensor.cpp"
 
 using namespace std;
 
