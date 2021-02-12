@@ -24,6 +24,7 @@ class MultiplyOperation: public Operation {
     }
     void backward(float grad) {
         if(t1 == t2) {
+            cout << "HERE" << endl;
             t1->backward(grad*2*t1->val);
         }
         else {
