@@ -33,7 +33,6 @@ void Operation::backward(float grad) {
     else if(this->type.compare("Multiply") == 0) {
         if(t1 == t2) {
             t1->backward(grad*2*t1->val);
-            t2->backward(grad*2*t1->val);
         }
         else {
             t1->backward(grad*t2->val);

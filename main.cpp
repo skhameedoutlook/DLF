@@ -7,14 +7,11 @@ using namespace std;
 
 int main() {
     Tensor a, b, c;
-    a.val = 2;
+    a.val = 5;
     b.val = 3;
-    c = a*b;
-    cout << c.val << endl;
-    cout << c.op->t1->val<<endl;
-    cout << c.op->t2->val<<endl;
-    cout << c.op->type<<endl;
+    c = a*a*a;
     c.backward();
+    cout << a.grad << endl;
 
     return 0;
 }
