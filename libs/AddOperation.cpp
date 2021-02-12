@@ -19,7 +19,7 @@ class AddOperation: public Operation {
         if(this->t1 == NULL || this->t2 == NULL) {
             return NULL;
         }
-        return new Tensor(this->t1->val*this->t2->val);
+        return new Tensor(this->t1->val+this->t2->val);
     }
     void backward(float grad) {
         if(t1 == t2) {

@@ -6,11 +6,6 @@ using namespace std;
 
 int main() {
     Tensor a, b, c;
-    // a.val = 5;
-    // b.val = 3;
-    // c = a*a*a;
-    // c.backward();
-    // cout << a.grad << endl;
     Tensor w, x, y;
     w.val = 1;
     x.val = 2;
