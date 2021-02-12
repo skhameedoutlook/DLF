@@ -4,7 +4,6 @@
 
 using namespace std;
 
-
 int main() {
     Tensor a, b, c;
     a.val = 5;
@@ -12,6 +11,7 @@ int main() {
     c = a*a*a;
     c.backward();
     cout << a.grad << endl;
+    
 
     return 0;
 }

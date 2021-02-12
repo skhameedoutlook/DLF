@@ -1,12 +1,17 @@
 #include "Operation.h"
 #include "Tensor.h"
 #include "Operation.cpp"
+#include "MultiplyOperation.cpp"
+#include "AddOperation.cpp"
+#include "SubtractOperation.cpp"
+#include "DivideOperation.cpp"
 
 Tensor::Tensor() {
     this->val = 0;
     this->grad = 0;
     this->type = "float";
     this->op = NULL;
+    this->oper = '\0';
 }
 
 Tensor::Tensor(float val) {
@@ -14,19 +19,39 @@ Tensor::Tensor(float val) {
     this->grad = 0;
     this->type = "float";
     this->op = NULL;
+    this->oper = '\0';
 }
 
 Tensor Tensor::operator*(Tensor& second) {
-    Operation* op_node = new Operation(this, &second, "Multiply");
+    MultiplyOperation* op_node = new MultiplyOperation(this, &second);
     Tensor* result = op_node->execute();
     result->op = op_node;
+    result->oper = '*';
     return *result;
 }
 
 Tensor Tensor::operator+(Tensor& second) {
-    Operation* op_node = new Operation(this, &second, "Add");
+    AddOperation* op_node = new AddOperation(this, &second);
     Tensor* result = op_node->execute();
     result->op = op_node;
+    result->oper = '+';
+    return *result;
+}
+
+Tensor Tensor::operator-(Tensor& second) {
+    SubtractOperation* op_node = new SubtractOperation(this, &second);
+    Tensor* result = op_node->execute();
+    result->op = op_node;
+    result->oper = '-';
+    return *result;
+}
+
+
+Tensor Tensor::operator/(Tensor& second) {
+    DivideOperation* op_node = new DivideOperation(this, &second);
+    Tensor* result = op_node->execute();
+    result->op = op_node;
+    result->oper = '/';
     return *result;
 }
 
